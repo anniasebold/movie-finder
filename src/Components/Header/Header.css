@@ -1,0 +1,24 @@
+:root {
+  --green: #1FA711;
+  --red: #DC3545;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  padding-left: 20px;
+  height: 60px;
+}
+
+.logo img {
+  width: 320px;
+  height: 70px;
+}
+
+.links-nav > a {
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+}
