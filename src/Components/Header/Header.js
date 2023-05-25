@@ -16,8 +16,8 @@ function Header() {
         </Nav>
         <Navbar.Collapse id="responsive-navbar-nav" className="custom-collapse">
           <Nav className="nav-links justify-content-end flex-grow-1 pe-3">
-            <Nav.Link href="#watchlist" className="custom-link me-2">Watchlist</Nav.Link>
-            <Nav.Link href="https://github.com/anniasebold/movie-finder" target="_blank" className="custom-link me-4">
+            <Nav.Link href="#watchlist" className="me-2">Watchlist</Nav.Link>
+            <Nav.Link href="https://github.com/anniasebold/movie-finder" target="_blank" className="me-4">
               Github
             </Nav.Link>
             <Button href="#login" variant="danger">Login</Button>
