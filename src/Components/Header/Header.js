@@ -1,7 +1,7 @@
 import './Header.css'
 import items from '../../assets/svgs';
 import { Button } from 'reactstrap';
-import SearchMovie from '../Search/Search'
+import Search from '../Search/Search'
 
 function Header() {
   return (
@@ -9,7 +9,7 @@ function Header() {
         <div className="logo">
           <img src="/movie-finder/src/assets/logo.png" alt="Logo" />
         </div>
-        <SearchMovie />
+        <Search />
         <div className='links-nav'>
           <a href="https://www.google.com.br/">Watchlist</a>
         </div>

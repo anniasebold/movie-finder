@@ -1,17 +1,21 @@
-import './Search.css'
-import { Input } from "reactstrap";
+import '../Header/Header.css'
+import { Form, Button } from "react-bootstrap";
 
 function Search() {
   return (
+    <>
     <div>
-      <Input 
-        className="input-search" 
-        type="search" 
-        placeholder="Digite o nome do filme para pesquisar" 
+      <Form className="d-flex">
+      <Form.Control
+        type="search"
+        placeholder="Digite o nome do filme"
+        className="me-2"
         aria-label="Search"
       />
-      <i className="fas fa-search search-btn" />
+      <Button className="input-search" variant="success">Search</Button>
+      </Form>
     </div>
+    </>
   );
 }
 
