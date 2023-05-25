@@ -1,10 +1,10 @@
 import './App.css';
-import HeaderBootstrap from './Components/Header/HeaderBootstrap'
+import Header from './Components/Header/Header'
 
 function App() {
   return (
     <>
-    <HeaderBootstrap />
+    <Header />
     <div className="App">
       <header className="App-header">
       </header>
