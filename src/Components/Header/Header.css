@@ -1,5 +1,5 @@
 #nav-logo {
-  @media screen and (max-width: 1020px) {
+  @media screen and (max-width: 992px) {
     display: none;
   }
 }

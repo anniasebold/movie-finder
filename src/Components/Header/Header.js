@@ -5,7 +5,7 @@ import './Header.css'
 function Header() {
   return (
     <>
-    <Navbar collapseOnSelect expand="lg" className="navbar">
+    <Navbar collapseOnSelect expand="lg" className="navbar" fixed="top">
       <Container className="navbar">
         <Nav className="nav-links" id="nav-logo">
           <Navbar.Brand href="#">Movie Finder</Navbar.Brand>
