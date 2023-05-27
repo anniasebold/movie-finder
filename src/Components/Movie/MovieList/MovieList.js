@@ -1,12 +1,13 @@
 import './MovieCard.scss';
-import { Card, Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import axios from 'axios';
 import React from 'react';
+import MovieCard from './MovieCard/MovieCard';
 
 const API_KEY = 'bf74bdfa989ad758eb544fbbde7650e4'
 const language = 'pt-BR'
 
-function MovieCard() {
+function MovieList() {
   const [movies, setMovies] = React.useState([]);
   const [genres, setGenres] = React.useState([]);
 
@@ -39,29 +40,12 @@ function MovieCard() {
     fetchGenres();
   }, []);
 
-  const getGenresName = (movie) => {
-    return (
-      genres
-        .filter(genre => movie.genre_ids.includes(genre.id))
-        .map(genre => genre.name)
-        .join(', ')
-    )
-  }
-
   return (
     <>
     <Container>
       <Row xs={1} md={2} className="">
         {movies.map((movie) => (
-          <Col key={movie.id} md={3}>
-            <Card id="movie-card">
-              <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} />
-              <Card.Body>
-                <Card.Title>{movie.title}</Card.Title>
-                <Card.Text>{getGenresName(movie)}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
+          <MovieCard movie={movie} genres={genres}/>
         ))};
       </Row>
     </Container>
@@ -69,4 +53,4 @@ function MovieCard() {
   );
 }
 
-export default MovieCard;
+export default MovieList;
