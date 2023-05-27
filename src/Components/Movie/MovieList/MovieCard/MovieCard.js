@@ -14,7 +14,7 @@ function MovieCard({ movie, genres }) {
 
   return (
     <>
-    <Col key={movie.id} md={3}>
+    <Col md={3}>
       <Card id="movie-card">
         <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} />
         <Card.Body>

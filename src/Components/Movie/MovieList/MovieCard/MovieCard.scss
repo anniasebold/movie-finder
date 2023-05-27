@@ -1,0 +1,17 @@
+.card-body {
+  background-color: #000;
+  min-height: 200px;
+}
+
+.card-title, .card-text {
+  color: white;
+}
+
+#movie-card {
+  box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15);
+  border: none;
+  border-radius: 0.75rem;
+  margin-bottom: 20px;
+  z-index: 1;
+  margin-top: 100px; //tirar depois
+}
