@@ -1,5 +1,5 @@
 import './MovieCard.scss';
-import { Container, Row } from 'react-bootstrap';
+import { Button, Container, Row } from 'react-bootstrap';
 import axios from 'axios';
 import React from 'react';
 import MovieCard from './MovieCard/MovieCard';
@@ -11,31 +11,31 @@ function MovieList() {
   const [movies, setMovies] = React.useState([]);
   const [genres, setGenres] = React.useState([]);
 
-  React.useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${language}`
-        );
+  const fetchMovies = async (page = 1) => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${language}&${page}`
+      );
 
-        setMovies(response.data.results);
-      } catch(e) {
-        console.error(e);
-      }
-    };
-
-    const fetchGenres = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=${language}`
-        );
-          
-        setGenres(response.data.genres);
-      } catch(e) {
-        console.error(e);
-      }
+      setMovies(response.data.results)
+    } catch(e) {
+      console.error(e);
     }
+  };
 
+  const fetchGenres = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=${language}`
+      );
+        
+      setGenres(response.data.genres);
+    } catch(e) {
+      console.error(e);
+    }
+  };
+
+  React.useEffect(() => {
     fetchMovies();
     fetchGenres();
   }, []);

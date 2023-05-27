@@ -1,16 +1,16 @@
 import { Card, Col } from 'react-bootstrap';
 import './MovieCard.scss'
 
-const getGenresName = (movie, genres) => {
-  return (
-    genres
-      .filter(genre => movie.genre_ids.includes(genre.id))
-      .map(genre => genre.name)
-      .join(', ')
-  )
-};
-
 function MovieCard({ movie, genres }) {
+
+  const getGenresName = (movie, genres) => {
+    return (
+      genres
+        .filter(genre => movie.genre_ids.includes(genre.id))
+        .map(genre => genre.name)
+        .join(', ')
+    )
+  };
 
   return (
     <>
