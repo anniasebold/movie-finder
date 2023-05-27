@@ -1,4 +1,4 @@
-import '../Header/Header.css'
+import '../Header/Header.scss'
 import { Form, Button } from "react-bootstrap";
 
 function Search() {

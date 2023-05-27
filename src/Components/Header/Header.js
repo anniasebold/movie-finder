@@ -1,6 +1,6 @@
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import Search from "../Search/Search";
-import './Header.css'
+import './Header.scss'
 
 function Header() {
   return (

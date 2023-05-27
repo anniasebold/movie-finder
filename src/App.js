@@ -1,14 +1,12 @@
-import './App.css';
+import './App.scss';
 import Header from './Components/Header/Header'
+import MovieCard from './Components/Movie/MovieCard/MovieCard';
 
 function App() {
   return (
     <>
     <Header />
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
+    <MovieCard />
     </>
   );
 }
