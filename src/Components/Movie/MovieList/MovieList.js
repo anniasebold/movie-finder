@@ -59,15 +59,19 @@ function MovieList() {
 
   return (
     <>
-    <Container>
-      <Row xs={1} md={2} className="">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} genres={genres}/>
-        ))};
-        <Button id="btn-see-more" variant="success" onClick={loadMoreMovies}>
+    <Container className="">
+      <div className='d-flex flex-wrap justify-content-md-between justify-content-center'>
+        <Row xs={1} md={2}>
+          {movies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} genres={genres}/>
+          ))}
+        </Row>
+      </div>
+      <div className="d-grid gap-2">
+        <Button id="btn-see-more" variant="success" onClick={loadMoreMovies} size="lg">
           Ver Mais
         </Button>
-      </Row>
+      </div>
     </Container>
     </>
   );
