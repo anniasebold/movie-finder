@@ -8,7 +8,7 @@ function Header() {
     <Navbar collapseOnSelect expand="lg" className="navbar" fixed="top">
       <Container className="navbar">
         <Nav className="nav-links" id="nav-logo">
-          <Navbar.Brand href="#">Movie Finder</Navbar.Brand>
+          <Navbar.Brand href="/">Movie Finder</Navbar.Brand>
         </Nav>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Nav>
