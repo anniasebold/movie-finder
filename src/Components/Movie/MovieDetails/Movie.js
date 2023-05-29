@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { Badge, Col, Container, Row } from "react-bootstrap";
 import api from "../../../services/api";
+import Loading from "../../Loading/Loading";
+import Erro from "../../Erro/Erro";
+import './Movie.scss'
 
 const API_KEY = 'bf74bdfa989ad758eb544fbbde7650e4';
 const language = 'pt-BR';
@@ -37,19 +40,52 @@ function Movie() {
   }, [id, movie, isLoading]);
 
   if(isLoading) {
-    console.log("Carregando...");
-    return <div>Carregando...</div>
+    return <Loading />;
   };
 
   if(!movie) {
-    console.log("Filme não encontrado.");
-    return <h2>Filme não encontrado.</h2>
+    return <Erro />;
   };
 
+  const getDuration = (total) => {
+    let hours = Math.floor(total / 60);
+    let mins = total % 60;
+    mins = mins < 10 ? "0" + mins: mins;
+    return `${hours}h${mins}m`;
+  }
+
+  const data = new Date(movie.release_date).toLocaleDateString('pt-BR');
+  
+  const budget = movie.budget.toLocaleString('pt-BR');
+
   return (
-    <Container>
-      <h2>{movie.title}</h2>
-    </Container>
+    <div className="movie-details">
+      <Container>
+        <Row>
+          <Col xs={12} md={4} className="movie-poster">
+            <img 
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+            >
+            </img>
+          </Col>
+          <Col xs={12} md={8} className="movie-info">
+            <h2>{movie.title}</h2>
+            <h3>{movie.tagline}</h3>
+            <p>{movie.overview}</p>
+            <p>Data de lançamento: {data}</p>
+            <p>Duração: {getDuration(movie.runtime)}</p>
+            <p>Orçamento: R${budget}</p>
+            <p className="genres-text">Genêros: </p>{"  "}
+            {movie.genres.map((genre) => (
+              <Badge id="badge-genre" bg="warning" key={genre.id} text="dark">
+                {genre.name}
+              </Badge>
+            ))}
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 
