@@ -1,8 +1,8 @@
-import './MovieList.scss';
 import { Button, Container, Row } from 'react-bootstrap';
-import axios from 'axios';
 import React from 'react';
+import './MovieList.scss';
 import MovieCard from './MovieCard/MovieCard';
+import api from '../../../services/api';
 
 const API_KEY = 'bf74bdfa989ad758eb544fbbde7650e4'
 const language = 'pt-BR'
@@ -14,9 +14,13 @@ function MovieList() {
 
   const fetchMovies = async (page = 1) => {
     try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${language}&page=${page}`
-      );
+      const response = await api.get('/movie/popular', {
+        params: {
+          api_key: API_KEY,
+          language: language,
+          page: page
+        }
+      });
 
       return response.data.results;
     } catch(e) {
@@ -26,9 +30,12 @@ function MovieList() {
 
   const fetchGenres = async () => {
     try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=${language}`
-      );
+      const response = await api.get('/genre/movie/list', {
+        params: {
+          api_key: API_KEY,
+          language: language
+        }
+      });
         
       setGenres(response.data.genres);
     } catch(e) {

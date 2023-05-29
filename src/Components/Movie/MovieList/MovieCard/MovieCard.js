@@ -14,7 +14,6 @@ function MovieCard({ movie, genres }) {
   };
 
   return (
-    <>
     <Col md={3}>
       <Link to={`/movie/${movie.id}`} id="link-movie">
         <Card id="movie-card">
@@ -26,7 +25,6 @@ function MovieCard({ movie, genres }) {
         </Card>
       </Link>
     </Col>
-    </>
   );
 }
 
