@@ -14,7 +14,7 @@ function MovieList() {
 
   const fetchMovies = async (page = 1) => {
     try {
-      const response = await api.get('/movie/popular', {
+      const response = await api.get('/movie/now_playing', {
         params: {
           api_key: API_KEY,
           language: language,
@@ -66,7 +66,7 @@ function MovieList() {
 
   return (
     <>
-    <Container className="">
+    <Container>
       <div className='d-flex flex-wrap justify-content-md-between justify-content-center'>
         <Row xs={1} md={2}>
           {movies.map((movie) => (
