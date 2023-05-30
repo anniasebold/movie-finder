@@ -1,6 +1,19 @@
-.input-search {
-  border-radius: 5px;
-  border: none;
-  padding: 0.3rem;
-  width: 25rem;
+#form-search {
+  @media screen and (max-width: 440px) {
+    width: 250px;
+  }
+
+  @media screen and (max-width: 412px) {
+    width: 220px;
+  }
+
+  @media screen and (max-width: 385px) {
+    width: 185px;
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 345px) {
+    width: 150px;
+    font-size: 10px;
+  }
 }

@@ -1,5 +1,6 @@
 import '../Header/Header.scss'
 import { Form, Button } from "react-bootstrap";
+import './Search.scss'
 
 function Search() {
   return (
@@ -11,8 +12,9 @@ function Search() {
           placeholder="Digite o nome do filme"
           className="me-2"
           aria-label="Search"
+          id="form-search"
         />
-        <Button className="input-search" variant="success">Search</Button>
+        <Button variant="success">Search</Button>
       </Form>
     </div>
     </>
