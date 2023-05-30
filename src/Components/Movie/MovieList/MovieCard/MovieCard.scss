@@ -2,13 +2,33 @@
   background-color: #000;
   min-height: 150px;
 
-  @media screen and (max-width: 991px) {
+  @media screen and (max-width: 1199px ) {
     min-height: 200px;
+  }
+
+  @media screen and (max-width: 768px) {
+    min-height: 150px;
   }
 }
 
 .card-title, .card-text {
   color: white;
+}
+
+.card-img-top{
+  min-height: 459px;
+
+  @media screen and (max-width: 1399px) {
+    min-height: 392px;
+  }
+
+  @media screen and (max-width: 1199px) {
+    min-height: 324px;
+  }
+
+  @media screen and (max-width: 989px) {
+    min-height: 234px;
+  }
 }
 
 #movie-card {

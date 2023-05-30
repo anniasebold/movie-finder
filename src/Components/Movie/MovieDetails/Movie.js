@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Badge, Button, Col, Container, Row } from "react-bootstrap";
 
-import api from "../../../services/api";
-import Loading from "../../Loading/Loading";
+import ActorCard from './ActorCard/ActorCard';
 import Erro from "../../Erro/Erro";
+import Loading from "../../Loading/Loading";
+import api from "../../../services/api";
 import icons from "../../../assets/svgs";
 import './Movie.scss'
 
@@ -135,10 +136,7 @@ function Movie() {
             <h2>ATORES:</h2>
           </Col>
             {actors.map((actor) => (
-            <Col xs={12} md={4}>
-              {/* <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`} alt={actor.name}></img> */}
-              <p key={actor.id}>{actor.name}</p>
-            </Col>
+              <ActorCard actor={ actor }/>
             ))}
         </Row>
       </Container>
