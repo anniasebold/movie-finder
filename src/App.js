@@ -1,9 +1,10 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import './App.scss';
 import Header from './Components/Header/Header'
 import MovieList from './Components/Movie/MovieList/MovieList';
 import Movie from './Components/Movie/MovieDetails/Movie';
-import Erro from './Components/Erro/Erro';
+import Error from './Components/Error/Error';
+import SearchMovie from './Components/Movie/MovieList/SearchMovie';
+import './App.scss';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<MovieList />}></Route>
           <Route path="/movie/:id" element={<Movie />}></Route>
-          <Route path="*" element={<Erro />}></Route>
+          <Route path="/search" element={<SearchMovie />}></Route>
+          <Route path="*" element={<Error />}></Route>
         </Routes>
       </>
     </BrowserRouter> 

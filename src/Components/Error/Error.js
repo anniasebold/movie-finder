@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import './Erro.scss';
+import './Error.scss';
 
-function Erro() {
+function Error() {
   return (
     <div className="not-found">
       <h1>404</h1>
@@ -11,4 +11,4 @@ function Erro() {
   );
 }
 
-export default Erro;
+export default Error;

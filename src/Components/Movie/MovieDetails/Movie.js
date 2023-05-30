@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Badge, Button, Col, Container, Row } from "react-bootstrap";
 
 import ActorCard from './ActorCard/ActorCard';
-import Erro from "../../Erro/Erro";
+import Error from "../../Error/Error";
 import Loading from "../../Loading/Loading";
 import api from "../../../services/api";
 import icons from "../../../assets/svgs";
@@ -58,7 +58,7 @@ function Movie() {
   };
 
   if(!movie) {
-    return <Erro />;
+    return <Error />;
   };
 
   const getDuration = (total) => {
@@ -136,7 +136,7 @@ function Movie() {
             <h2>ATORES:</h2>
           </Col>
             {actors.map((actor) => (
-              <ActorCard actor={ actor }/>
+              <ActorCard actor={ actor } key={actor.id}/>
             ))}
         </Row>
       </Container>

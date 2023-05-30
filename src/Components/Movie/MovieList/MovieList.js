@@ -7,10 +7,26 @@ import api from '../../../services/api';
 const API_KEY = 'bf74bdfa989ad758eb544fbbde7650e4'
 const language = 'pt-BR'
 
-function MovieList() {
+function MovieList({ movieSearch }) {
   const [movies, setMovies] = React.useState([]);
   const [genres, setGenres] = React.useState([]);
   const [page, setPage] = React.useState(1);
+
+  const fetchMoviesSearch = async (movieSearch) => {
+    try {
+      const response = await api.get('/search/movie', {
+        params: {
+          api_key: API_KEY,
+          language: language,
+          query: movieSearch
+        }
+      });
+
+      setMovies(response.data.results);
+    } catch(e) {
+      console.error(e);
+    }
+  };
 
   const fetchMovies = async (page = 1) => {
     try {
@@ -48,13 +64,16 @@ function MovieList() {
   }, []);
 
   React.useEffect(() => {
-    const loadInitialMovies = async () => {
-      const initialMovies = await fetchMovies();
-      setMovies(initialMovies);
-    };
-  
-    loadInitialMovies();
-  }, []);
+    if(movieSearch) {
+      fetchMoviesSearch(movieSearch);
+    } else {
+      const loadInitialMovies = async () => {
+        const initialMovies = await fetchMovies();
+        setMovies(initialMovies);
+      };
+      loadInitialMovies();
+    }
+  }, [ movieSearch ]);
   
 
   const loadMoreMovies = async () => {
@@ -66,20 +85,22 @@ function MovieList() {
 
   return (
     <>
-    <Container>
-      <div className='d-flex flex-wrap justify-content-md-between justify-content-center'>
-        <Row xs={1} md={2}>
-          {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} genres={genres}/>
-          ))}
-        </Row>
-      </div>
-      <div className="d-grid gap-2">
-        <Button id="btn-see-more" variant="success" onClick={loadMoreMovies} size="lg">
-          Ver Mais
-        </Button>
-      </div>
-    </Container>
+      <Container>
+        <div className='d-flex flex-wrap justify-content-md-between justify-content-center'>
+          <Row xs={1} md={2}>
+            {movies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} genres={genres}/>
+            ))}
+          </Row>
+        </div>
+        {!movieSearch && (   
+          <div className="d-grid gap-2">
+            <Button id="btn-see-more" variant="success" onClick={loadMoreMovies} size="lg">
+              Ver Mais
+            </Button>
+          </div>
+        )}
+      </Container>
     </>
   );
 }
