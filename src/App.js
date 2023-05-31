@@ -3,7 +3,7 @@ import Header from './Components/Header/Header'
 import MovieList from './Components/Movie/MovieList/MovieList';
 import Movie from './Components/Movie/MovieDetails/Movie';
 import Error from './Components/Error/Error';
-import SearchMovie from './Components/Movie/MovieList/SearchMovie';
+import MovieSearch from './Components/Movie/MovieList/MovieSearch';
 import './App.scss';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<MovieList />}></Route>
           <Route path="/movie/:id" element={<Movie />}></Route>
-          <Route path="/search" element={<SearchMovie />}></Route>
+          <Route path="/search" element={<MovieSearch />}></Route>
           <Route path="*" element={<Error />}></Route>
         </Routes>
       </>

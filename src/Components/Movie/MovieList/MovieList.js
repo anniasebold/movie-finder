@@ -1,4 +1,4 @@
-import { Button, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import React from 'react';
 import './MovieList.scss';
 import MovieCard from './MovieCard/MovieCard';
@@ -89,7 +89,9 @@ function MovieList({ movieSearch }) {
         <div className='d-flex flex-wrap justify-content-md-between justify-content-center'>
           <Row xs={1} md={2}>
             {movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} genres={genres}/>
+              <Col md={3} className={movies.length === 1 ? 'list-movie-1' : (movies.length === 2 ? 'list-movie-2' : '')}>
+                <MovieCard key={movie.id} movie={movie} genres={genres}/>
+              </Col>
             ))}
           </Row>
         </div>
