@@ -1,6 +1,7 @@
 import { Card } from 'react-bootstrap';
 import './MovieCard.scss'
 import { Link } from 'react-router-dom';
+import noImage from '../../../../assets/noImage.png'
 
 function MovieCard({ movie, genres }) {
 
@@ -18,7 +19,10 @@ function MovieCard({ movie, genres }) {
       <Card id="movie-card">
         <Card.Img 
           variant="top" 
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          src={
+            movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+            : noImage
+          }
           alt={movie.title}
         />
         <Card.Body>

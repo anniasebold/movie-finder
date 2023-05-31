@@ -2,12 +2,14 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Badge, Button, Col, Container, Row } from "react-bootstrap";
+import { Helmet } from 'react-helmet';
 
 import ActorCard from './ActorCard/ActorCard';
 import Error from "../../Error/Error";
 import Loading from "../../Loading/Loading";
 import api from "../../../services/api";
 import icons from "../../../assets/svgs";
+import noImage from '../../../assets/noImage.png'
 import './Movie.scss'
 
 const API_KEY = 'bf74bdfa989ad758eb544fbbde7650e4';
@@ -97,50 +99,58 @@ function Movie() {
   }
 
   return (
-    <div className="movie-details">
-      <Container>
-        <Row>
-          <Col xs={12} md={4} className="movie-poster">
-            <img 
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              alt={movie.title}
-            >
-            </img>
-          </Col>
-          <Col xs={12} md={8} className="movie-info">
-            <h2>{movie.title}</h2>
-            <h3>{movie.tagline}</h3>
-            <p>{movie.overview}</p>
-            <p>Data de lançamento: {data}</p>
-            <p>Duração: {getDuration(movie.runtime)}</p>
-            <p>Orçamento: R${budget}</p>
-            <p className="genres-text">Genêros: </p>{"  "}
-            {movie.genres.map((genre) => (
-              <Badge id="badge-genre" bg="warning" key={genre.id} text="dark">
-                {genre.name}
-              </Badge>
-            ))}
-            <div className="note-stars">
-              <p>Nota: {voteAverage}</p>
-              <p>{renderStars(voteAverage)}</p>
-            </div>
-            <Button variant="success" className="button-watchlist">
-              <i>{icons.bookmarkIcon}</i>
-              Adicionar a Watchlist
-            </Button>{' '}
-          </Col>
+    <>
+      <Helmet>
+        <title>{movie.title}</title>
+      </Helmet>
+      <div className="movie-details">
+        <Container>
+          <Row>
+            <Col xs={12} md={4} className="movie-poster">
+              <img 
+                src={
+                  movie.poster_path ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                  : noImage
+                }
+                alt={movie.title}
+              >
+              </img>
+            </Col>
+            <Col xs={12} md={8} className="movie-info">
+              <h2>{movie.title}</h2>
+              <h3>{movie.tagline}</h3>
+              <p>{movie.overview}</p>
+              <p>Data de lançamento: {data}</p>
+              <p>Duração: {getDuration(movie.runtime)}</p>
+              <p>Orçamento: R${budget}</p>
+              <p className="genres-text">Genêros: </p>{"  "}
+              {movie.genres.map((genre) => (
+                <Badge id="badge-genre" bg="warning" key={genre.id} text="dark">
+                  {genre.name}
+                </Badge>
+              ))}
+              <div className="note-stars">
+                <p>Nota: {voteAverage}</p>
+                <p>{renderStars(voteAverage)}</p>
+              </div>
+              <Button variant="success" className="button-watchlist">
+                <i>{icons.bookmarkIcon}</i>
+                Adicionar a Watchlist
+              </Button>{' '}
+            </Col>
 
-        </Row>
-        <Row className="actors-details">
-          <Col xs={12} md={12}>
-            <h2>ATORES:</h2>
-          </Col>
-            {actors.map((actor) => (
-              <ActorCard actor={ actor } key={actor.id}/>
-            ))}
-        </Row>
-      </Container>
-    </div>
+          </Row>
+          <Row className="actors-details">
+            <Col xs={12} md={12}>
+              <h2>ATORES:</h2>
+            </Col>
+              {actors.map((actor) => (
+                <ActorCard actor={ actor } key={actor.id}/>
+              ))}
+          </Row>
+        </Container>
+      </div>
+    </>
   );
 }
 
