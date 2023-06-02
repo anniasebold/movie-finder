@@ -1,0 +1,53 @@
+.card-body {
+  background-color: #000;
+  min-height: 150px;
+
+  @media screen and (max-width: 1199px ) {
+    min-height: 200px;
+  }
+
+  @media screen and (max-width: 768px) {
+    min-height: 150px;
+  }
+}
+
+.card-title, .card-text {
+  color: white;
+}
+
+.card-img-top{
+  min-height: 459px;
+
+  @media screen and (max-width: 1399px) {
+    min-height: 392px;
+  }
+
+  @media screen and (max-width: 1199px) {
+    min-height: 324px;
+  }
+
+  @media screen and (max-width: 989px) {
+    min-height: 234px;
+  }
+}
+
+#movie-card {
+  box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15);
+  border: 0 none;
+  border-radius: 0.75rem;
+  margin-bottom: 20px;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.card-text {
+  font-size: 12.8px;
+}
+
+.card-title h5 {
+  font-size: 16px;
+}
+
+#link-movie {
+  text-decoration: none;
+}

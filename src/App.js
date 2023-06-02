@@ -1,11 +1,11 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import Header from './Components/Header/Header'
-import MovieList from './Components/Movie/MovieList/MovieList';
-import Movie from './Components/Movie/MovieDetails/Movie';
-import Error from './Components/Error/Error';
-import MovieSearch from './Components/Movie/MovieList/MovieSearch';
+import Header from './components/Header/Header'
+import MovieList from './pages/Movie/MovieList/MovieList';
+import Movie from './pages/Movie/MovieDetails/Movie';
+import Error from './components/Error/Error';
+import MovieSearch from './pages/Movie/MovieList/MovieSearch';
 import './App.scss';
-import Auth from './Components/Auth/Auth';
+import Auth from './pages/Auth/Auth';
 
 function App() {
   return (

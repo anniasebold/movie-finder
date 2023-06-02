@@ -1,0 +1,40 @@
+.page {
+  height: 80vh;
+}
+
+.card-login {
+  background-color: rgba(37,34,34,.75);
+  padding: 40px;
+  color: #FFF;
+  border-radius: 8px;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 0.30rem;
+  }
+
+  .form-auth {
+    margin-bottom: 10px;
+  }
+
+  .btn-login {
+    width: 100%;
+    margin-top: 50px;
+    font-size: 20px;
+  }
+
+  .text-form {
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .alert-error {
+    color: #FFC107;
+  }
+}

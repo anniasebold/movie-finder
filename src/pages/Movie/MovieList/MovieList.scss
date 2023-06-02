@@ -1,0 +1,12 @@
+#btn-see-more {
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+.list-movie-1 {
+  @media screen and (min-width: 768px) {
+    width: 75% !important;
+  }
+}
