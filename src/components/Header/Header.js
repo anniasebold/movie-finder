@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
-import Search from "../Search/Search";
+import Search from "../../pages/Search/Search";
 import './Header.scss'
 import { Link } from "react-router-dom";
 import logo from '../../assets/logo.png';
