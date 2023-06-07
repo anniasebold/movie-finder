@@ -120,7 +120,7 @@ function Movie() {
               <h2>{movie.title}</h2>
               <h3>{movie.tagline}</h3>
               <p>{movie.overview}</p>
-              <p>Data de lançamento: {data}</p>
+              <p>Data de lançamento: {data ? movie.release_date : ''}</p>
               <p>Duração: {getDuration(movie.runtime)}</p>
               <p>Orçamento: R${budget}</p>
               <p className="genres-text">Genêros: </p>{"  "}
