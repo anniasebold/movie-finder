@@ -7,13 +7,10 @@ import { Helmet } from 'react-helmet';
 import ActorCard from './ActorCard/ActorCard';
 import Error from "../../../components/Error/Error";
 import Loading from "../../../components/Loading/Loading";
-import api from "../../../services/api";
+import { api, API_KEY, language } from "../../../services/apiMovies";
 import icons from "../../../assets/svgs";
 import noImage from '../../../assets/noImage.png'
 import './Movie.scss'
-
-const API_KEY = 'bf74bdfa989ad758eb544fbbde7650e4';
-const language = 'pt-BR';
 
 function Movie() {
   const [movie, setMovie] = useState(null);

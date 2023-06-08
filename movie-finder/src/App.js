@@ -5,7 +5,8 @@ import Movie from './pages/Movie/MovieDetails/Movie';
 import Error from './components/Error/Error';
 import MovieSearch from './pages/Movie/MovieList/MovieSearch';
 import './App.scss';
-import Auth from './pages/Auth/Auth';
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register'
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
           <Route exact path="/" element={<MovieList />}></Route>
           <Route path="/movie/:id" element={<Movie />}></Route>
           <Route path="/search" element={<MovieSearch />}></Route>
-          <Route path="/login" element={<Auth />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
           <Route path="*" element={<Error />}></Route>
         </Routes>
       </>

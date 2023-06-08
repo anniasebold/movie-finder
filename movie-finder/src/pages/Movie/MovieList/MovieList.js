@@ -2,12 +2,9 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import React from 'react';
 import './MovieList.scss';
 import MovieCard from './MovieCard/MovieCard';
-import api from '../../../services/api';
+import { api, API_KEY, language } from '../../../services/apiMovies';
 import Error from '../../../components/Error/Error';
 import { Helmet } from 'react-helmet';
-
-const API_KEY = 'bf74bdfa989ad758eb544fbbde7650e4'
-const language = 'pt-BR'
 
 function MovieList({ movieSearch }) {
   const [movies, setMovies] = React.useState([]);

@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import './Auth.scss';
 import { Link } from 'react-router-dom';
 
-function Auth() {
+function Login() {
   const handleSubmit = (values) => {
     console.log(values);
   };
@@ -52,7 +52,7 @@ function Auth() {
   
             <span>
               <span className="inline">Não é um usuário?</span>{" "}
-              <Link to="/" className="text-form">
+              <Link to="/register" className="text-form">
                 Crie sua conta
               </Link>
             </span>
@@ -64,4 +64,4 @@ function Auth() {
   );
 }
 
-export default Auth;
+export default Login;
