@@ -2,35 +2,36 @@ import { Button, Form as FormB } from 'react-bootstrap';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { Helmet } from 'react-helmet';
 import * as Yup from 'yup';
-import './Auth.scss';
 import { Link } from 'react-router-dom';
-import { db } from '../../services/apiFirebase';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth } from '../../services/apiFirebase';
+import { translateError } from './ErrorAuth';
+import Loading from '../../components/Loading/Loading';
+import './Auth.scss';
 
 function Login() {
-  const [users, setUsers] = useState([]);
   const [isSuccess, setIsSuccess] = useState(false);
-  const usersCollectionRef = collection(db, 'users');
 
-  async function onSubmit({ email, password }, { setFieldError, resetForm }) {
-    const emailExists = users.some(user => user.email === email);
-    if(emailExists) {
-      setFieldError('email', 'Email já utilizado.');
-      return;
+  const [ createUserWithEmailAndPassword, user, loading, error ] =
+  useCreateUserWithEmailAndPassword(auth);
+
+  async function handleSingUp({ email, password }, { resetForm }) {
+    const response = await createUserWithEmailAndPassword(email, password);
+
+    if(response) {
+      console.log(response);
+      setIsSuccess(true);
+      resetForm();
+
+      localStorage.setItem("token", response._tokenResponse.idToken)
+      localStorage.setItem("email", response.user.email)
     }
-    await addDoc(usersCollectionRef, { email, password });
-    setIsSuccess(true);
-    resetForm();
   }
 
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id })));
-    };
-    getUsers();
-  }, [ ]);
+  if(loading) {
+    return <Loading />
+  }
 
   return (
     <>
@@ -47,11 +48,12 @@ function Login() {
               .required('Obrigatório preencher o Email.'),
             password: Yup.string()
               .required('Obrigatório preencher a Senha.')
+              .min(6, 'A senha deve ter no mínimo 6 caracteres.')
           })}
-          onSubmit={onSubmit}
+          onSubmit={handleSingUp}
         >
           {({ isValid }) => (
-            <div className='card-login'>
+            <div className="card-login">
               {isSuccess ? (
                 <>
                   <div className='success-message'>
@@ -62,6 +64,9 @@ function Login() {
               ) : (
               <Form> 
                 <h3>Cadastro</h3>
+                {error && (
+                  <div className="error-message">{translateError(error.message)}</div>
+                )}
                 <div className="form-auth">
                   <FormB.Group controlId="email"name="email">
                     <label htmlFor="email">Email</label>
@@ -69,11 +74,7 @@ function Login() {
                     <ErrorMessage name="email" component="div" className="alert-error"></ErrorMessage>
                   </FormB.Group >
             
-                  <FormB.Group
-                    controlId="password"
-                    className="form-group"
-                    name="password"
-                  >
+                  <FormB.Group controlId="password" className="form-group" name="password">
                     <label htmlFor="password">Senha</label>
                     <Field type="password" name="password" className="form-control"></Field>
                     <ErrorMessage name="password" component="div" className="alert-error"></ErrorMessage>
@@ -81,7 +82,7 @@ function Login() {
   
                   <FormB.Group>
                     <Button type="submit" className="btn-login" variant="danger" disabled={!isValid}>
-                      Crie sua conta
+                      Criar conta
                     </Button>
                   </FormB.Group>
                 </div>
