@@ -4,25 +4,38 @@ import MovieList from './pages/Movie/MovieList/MovieList';
 import Movie from './pages/Movie/MovieDetails/Movie';
 import Error from './components/Error/Error';
 import MovieSearch from './pages/Movie/MovieList/MovieSearch';
-import './App.scss';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register'
+import { AuthProvider } from './context/Auth';
+import PrivateRoute from './components/PrivateRoute';
+import './App.scss';
+import Watchlist from './pages/Watchlist/Watchlist';
 
 function App() {
   return (
-    <BrowserRouter>
-      <> 
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<MovieList />}></Route>
-          <Route path="/movie/:id" element={<Movie />}></Route>
-          <Route path="/search" element={<MovieSearch />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="*" element={<Error />}></Route>
-        </Routes>
-      </>
-    </BrowserRouter> 
+    <>
+      <AuthProvider>
+        <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route exact path="/" element={<MovieList />}/>
+              <Route path="/movie/:id" element={<Movie />} />
+              <Route path="/search" element={<MovieSearch />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="*" element={<Error />} />
+              <Route 
+                path="/watchlist"
+                element={
+                  <PrivateRoute>
+                    <Watchlist />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </>
   );
 }
 
