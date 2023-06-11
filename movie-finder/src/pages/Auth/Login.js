@@ -19,15 +19,17 @@ function Login() {
 
   async function handleSignIn({ email, password }) {
     await signInWithEmailAndPassword(email, password);
-    navigate("/");
 
+    if(user) {
+      navigate("/");
+    };
   }
 
   useEffect(() => {
     if(currentUser) {
       navigate("/");
     }
-  }, [ currentUser, navigate ])
+  }, [ currentUser, navigate ]);
 
   
   if(loading) {
