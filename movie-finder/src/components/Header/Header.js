@@ -1,13 +1,26 @@
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import Search from "../../pages/Search/Search";
 import './Header.scss'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from '../../assets/logo.png';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faFilm, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { signOut } from "firebase/auth";
+import { useContext } from "react";
+import { auth } from "../../services/apiFirebase";
+import { AuthContext } from "../../context/Auth";
 
 function Header() {
+  const { currentUser } = useContext(AuthContext);
+  const navigate =  useNavigate();
+
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      navigate("/");
+    });
+  };
+
   return (
     <>
     <Navbar collapseOnSelect expand="lg" id="navbar" fixed="top">
@@ -38,9 +51,15 @@ function Header() {
             <Nav.Link href="https://github.com/anniasebold/movie-finder" target="_blank" className="me-4">
               <FontAwesomeIcon icon={faGithub} className="icon-github" alt="icone github" />
             </Nav.Link>
-            <Link id="nav-links" to="/login">
-              <Button variant="danger">Login</Button>
-            </Link>
+            {currentUser ? (
+              <Link id="nav-links">
+                <Button type="submit" variant="secondary" onClick={handleLogout}>Logout</Button>
+              </Link>
+            ) : (
+              <Link id="nav-links" to="/login">
+                <Button variant="danger">Login</Button>
+              </Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

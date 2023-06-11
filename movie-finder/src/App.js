@@ -7,7 +7,7 @@ import MovieSearch from './pages/Movie/MovieList/MovieSearch';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register'
 import { AuthProvider } from './context/Auth';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import './App.scss';
 import Watchlist from './pages/Watchlist/Watchlist';
 

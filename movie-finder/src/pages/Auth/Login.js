@@ -8,25 +8,28 @@ import { auth } from '../../services/apiFirebase';
 import { translateError } from './ErrorAuth';
 import Loading from '../../components/Loading/Loading';
 import './Auth.scss';
+import { AuthContext } from '../../context/Auth';
+import { useContext, useEffect } from 'react';
 
 function Login() {
   const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
 
   const [ signInWithEmailAndPassword, user, loading, error ] = useSignInWithEmailAndPassword(auth);
 
-  async function handleSingUp({ email, password }) {
-    signInWithEmailAndPassword(email, password);
+  async function handleSignIn({ email, password }) {
+    await signInWithEmailAndPassword(email, password);
+    navigate("/");
+
   }
 
-  if(user) {
-    alert(`Seu login foi realizado com sucesso, ${user.user.email}`);
+  useEffect(() => {
+    if(currentUser) {
+      navigate("/");
+    }
+  }, [ currentUser, navigate ])
 
-    localStorage.setItem("token", user._tokenResponse.idToken);
-    localStorage.setItem("email", user.user.email);
-
-    return navigate("/");
-  }
-
+  
   if(loading) {
     return <Loading />
   }
@@ -48,7 +51,7 @@ function Login() {
               .required('Obrigatório preencher a Senha.')
               .min(6, 'A senha deve ter no mínimo 6 caracteres.')
           })}
-          onSubmit={handleSingUp}
+          onSubmit={handleSignIn}
         >
           {({ isValid }) => (
             <div className="card-login">

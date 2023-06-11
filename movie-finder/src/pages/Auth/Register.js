@@ -10,22 +10,18 @@ import { translateError } from './ErrorAuth';
 import Loading from '../../components/Loading/Loading';
 import './Auth.scss';
 
-function Login() {
+function Register() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const [ createUserWithEmailAndPassword, user, loading, error ] =
   useCreateUserWithEmailAndPassword(auth);
 
-  async function handleSingUp({ email, password }, { resetForm }) {
+  async function handleSignUp({ email, password }, { resetForm }) {
     const response = await createUserWithEmailAndPassword(email, password);
 
     if(response) {
-      console.log(response);
       setIsSuccess(true);
       resetForm();
-
-      localStorage.setItem("token", response._tokenResponse.idToken)
-      localStorage.setItem("email", response.user.email)
     }
   }
 
@@ -50,7 +46,7 @@ function Login() {
               .required('Obrigatório preencher a Senha.')
               .min(6, 'A senha deve ter no mínimo 6 caracteres.')
           })}
-          onSubmit={handleSingUp}
+          onSubmit={handleSignUp}
         >
           {({ isValid }) => (
             <div className="card-login">
@@ -58,7 +54,7 @@ function Login() {
                 <>
                   <div className='success-message'>
                     <h5>Usuário criado com sucesso!</h5>
-                    <Link to="/">Voltar para o início</Link>
+                    <Link to="/watchlist">Watchlist</Link>
                   </div>
                 </>
               ) : (
@@ -102,4 +98,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
