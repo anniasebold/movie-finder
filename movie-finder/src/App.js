@@ -10,30 +10,33 @@ import { AuthProvider } from './context/Auth';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import './App.scss';
 import Watchlist from './pages/Watchlist/Watchlist';
+import { WatchlistProvider } from './context/Watchlist';
 
 function App() {
   return (
     <>
       <AuthProvider>
-        <BrowserRouter>
-            <Header />
-            <Routes>
-              <Route exact path="/" element={<MovieList />}/>
-              <Route path="/movie/:id" element={<Movie />} />
-              <Route path="/search" element={<MovieSearch />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="*" element={<Error />} />
-              <Route 
-                path="/watchlist"
-                element={
-                  <PrivateRoute>
-                    <Watchlist />
-                  </PrivateRoute>
-                }
-              />
-            </Routes>
-        </BrowserRouter>
+        <WatchlistProvider>
+          <BrowserRouter>
+              <Header />
+              <Routes>
+                <Route exact path="/" element={<MovieList />}/>
+                <Route path="/movie/:id" element={<Movie />} />
+                <Route path="/search" element={<MovieSearch />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="*" element={<Error />} />
+                <Route 
+                  path="/watchlist"
+                  element={
+                    <PrivateRoute>
+                      <Watchlist />
+                    </PrivateRoute>
+                  }
+                />
+              </Routes>
+          </BrowserRouter>
+        </WatchlistProvider>
       </AuthProvider>
     </>
   );

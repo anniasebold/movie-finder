@@ -1,16 +1,16 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Badge, Button, Col, Container, Row } from "react-bootstrap";
+import { Badge, Col, Container, Row } from "react-bootstrap";
 import { Helmet } from 'react-helmet';
 
 import ActorCard from './ActorCard/ActorCard';
 import Error from "../../../components/Error/Error";
 import Loading from "../../../components/Loading/Loading";
 import { api, API_KEY, language } from "../../../services/apiMovies";
-import icons from "../../../assets/svgs";
-import noImage from '../../../assets/noImage.png'
-import './Movie.scss'
+import noImage from '../../../assets/noImage.png';
+import './Movie.scss';
+import WatchlistButton from '../../Watchlist/WatchlistButton/WatchlistButton';
 
 function Movie() {
   const [movie, setMovie] = useState(null);
@@ -65,7 +65,7 @@ function Movie() {
     let mins = total % 60;
     mins = mins < 10 ? "0" + mins: mins;
     return `${hours}h${mins}m`;
-  }
+  };
 
   const data = new Date(movie.release_date).toLocaleDateString('pt-BR');
   
@@ -93,7 +93,7 @@ function Movie() {
     };
 
     return stars;
-  }
+  };
 
   return (
     <>
@@ -117,7 +117,7 @@ function Movie() {
               <h2>{movie.title}</h2>
               <h3>{movie.tagline}</h3>
               <p>{movie.overview}</p>
-              <p>Data de lançamento: {data ? movie.release_date : ''}</p>
+              <p>Data de lançamento: {movie.release_date ? data: ""} </p>
               <p>Duração: {getDuration(movie.runtime)}</p>
               <p>Orçamento: R${budget}</p>
               <p className="genres-text">Genêros: </p>{"  "}
@@ -130,10 +130,7 @@ function Movie() {
                 <p>Nota: {voteAverage}</p>
                 <p>{renderStars(voteAverage)}</p>
               </div>
-              <Button variant="success" className="button-watchlist">
-                <i>{icons.bookmarkIcon}</i>
-                Adicionar a Watchlist
-              </Button>{' '}
+              <WatchlistButton movie={movie} />
             </Col>
 
           </Row>
