@@ -10,13 +10,13 @@ import './Watchlist.scss'
 
 function Watchlist() {
   const watchlist = useContext(WatchlistContext);
-  const [loading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        setIsLoading(true);
+        setLoading(true);
 
         const promises = watchlist.map(async movie => {
           const result = await api.get(`/movie/${movie.movie_id}`, {
@@ -30,10 +30,10 @@ function Watchlist() {
         const results = await Promise.all(promises);
         setMovies(results);
 
-        setIsLoading(false);
+        setLoading(false);
       } catch(e) {
         console.error(e);
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
@@ -48,7 +48,7 @@ function Watchlist() {
     <>
       <div className="watchlist-card">
         <h1>Minha Watchlist</h1>
-        {!watchlist || watchlist.length === 0 ? (
+        {watchlist.length === 0 ? (
           <>
             <div className="watchlist-empty">
               <h5>Você ainda não adicionou filmes na sua Watchlist.</h5>

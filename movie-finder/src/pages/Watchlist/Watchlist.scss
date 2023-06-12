@@ -2,12 +2,15 @@
   color: #FFF;
 
   h1 {
-    margin-left: 2.5rem;
     margin-top: 20px;
     margin-bottom: 2rem;
 
     @media screen and(max-width: 768px) {
       text-align: center;
+    }
+
+    @media screen and(min-width: 768px) {
+      margin-left: 2.5rem;
     }
   }
   
