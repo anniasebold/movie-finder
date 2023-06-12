@@ -3,9 +3,15 @@ import './MovieCard.scss'
 import { Link } from 'react-router-dom';
 import noImage from '../../../../assets/noImage.png'
 
-function MovieCard({ movie, genres }) {
+function MovieCard({ movie, genres, genresMovie }) {
 
-  const getGenresName = (movie, genres) => {
+  const getGenresName = (movie, genres, genresMovie) => {
+    if(genresMovie) {
+      return (
+        (genresMovie.map(genre => genre.name).join(", "))
+      );
+    };
+
     return (
       genres
         .filter(genre => movie.genre_ids.includes(genre.id))
@@ -27,7 +33,7 @@ function MovieCard({ movie, genres }) {
         />
         <Card.Body>
           <Card.Title>{movie.title}</Card.Title>
-          <Card.Text>{getGenresName(movie, genres)}</Card.Text>
+          <Card.Text>{getGenresName(movie, genres, genresMovie)}</Card.Text>
         </Card.Body>
       </Card>
     </Link>

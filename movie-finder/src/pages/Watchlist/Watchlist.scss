@@ -1,0 +1,30 @@
+.watchlist-card {
+  color: #FFF;
+
+  h1 {
+    margin-left: 2.5rem;
+    margin-top: 20px;
+    margin-bottom: 2rem;
+
+    @media screen and(max-width: 768px) {
+      text-align: center;
+    }
+  }
+  
+  .watchlist-empty {
+    text-align: center;
+
+    h5 {
+      margin: 4rem 5px 2rem 5px;
+    }
+  
+    #button-home {
+      text-decoration: none;
+      background-color: #212529;
+      color: #FFF;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  }
+
+}

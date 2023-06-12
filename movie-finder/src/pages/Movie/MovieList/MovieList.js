@@ -94,13 +94,13 @@ function MovieList({ movieSearch }) {
         <div className='d-flex flex-wrap justify-content-md-between justify-content-center'>
           <Row xs={1} md={2}>
             {movies.map((movie) => (
-              <Col md={3} className={movies.length === 1 ? 'list-movie-1' : ''}>
+              <Col key={movie.id} md={3} className={movies.length === 1 ? 'list-movie-1' : ''}>
                 <MovieCard key={movie.id} movie={movie} genres={genres}/>
               </Col>
             ))}
           </Row>
         </div>
-        {!movieSearch && (   
+        {!movieSearch && (
           <div className="d-grid gap-2">
             <Button id="btn-see-more" variant="success" onClick={loadMoreMovies} size="lg">
               Ver Mais
