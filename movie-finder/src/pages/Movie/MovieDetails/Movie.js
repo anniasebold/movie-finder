@@ -69,7 +69,7 @@ function Movie() {
 
   const data = new Date(movie.release_date).toLocaleDateString('pt-BR');
   
-  const budget = movie.budget.toLocaleString('pt-BR');
+  const budget = (movie.budget * 5.10).toLocaleString('pt-BR');
 
   const voteAverage = movie.vote_average.toFixed(1);
 
