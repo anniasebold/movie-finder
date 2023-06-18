@@ -5,7 +5,6 @@ const api = axios.create({
 });
 
 const API_KEY = 'bf74bdfa989ad758eb544fbbde7650e4';
-
 const language = 'pt-BR';
 
 export { api, API_KEY, language};

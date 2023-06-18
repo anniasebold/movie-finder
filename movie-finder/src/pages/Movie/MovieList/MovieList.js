@@ -101,7 +101,6 @@ function MovieList({ movieSearch }) {
       <Container>
         {!movieSearch && (
           <>
-            <br />
             <ButtonGroup style={{ display: 'inline-block' }}>
               {values.map((selected, idx) => (
                 <ToggleButton
