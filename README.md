@@ -30,11 +30,12 @@
 ## 📚 Funcionalidades
 
 -   [ X ] Usuário pode ver os filmes que estão em cartaz nos cinemas na página principal.
--   [ X ] veja outras categorias de filmes como (Populares, Mais votados, Em breve).
+-   [ X ] Usuário pode acessar outras categorias de filmes como (Populares, Mais votados, Em breve) na página principal.
+-   [ X ] Usuário pode pesquisar pela barra de pesquisa digitando o nome do filme.
 -   [ X ] Usuário pode clicar em qualquer filme para ver os detalhes do filme em uma página separada.
--   [ X ] Usuário pode ver tudo sobre o filme como nota, atores, sinopse.
+-   [ X ] Usuário pode ver informações sobre o filme como avaliação, atores, sinopse, orçamento e genêros em uma página separada.
 -   [ X ] Usuário pode criar uma conta.
--   [ X ] Usuário pode adicionar filmes a sua _Watchlist_
+-   [ X ] Usuário pode adicionar filmes a sua _Watchlist_.
 
 <!-- ### 📚 Funcionalidades bônus
 -   [ ] Usuario pode avaliar os filmes -->
