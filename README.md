@@ -21,7 +21,7 @@
 
 ## 💻 Tecnologias utilizadas
 - [**React**](https://react.dev/reference/react) para a criação do front-end.
-- [**Firebase**](https://react.dev/reference/react) para autenticação e database.
+- [**Firebase**](https://firebase.google.com/) para autenticação e database.
 - [**Bootstrap**](https://react-bootstrap.netlify.app/) para estilização de componentes.
 - [**Git**](https://git-scm.com/) para controle de versão do projeto.
 - [**Github**](https://github.com/anniasebold/movie-finder) para postagem do projeto.
